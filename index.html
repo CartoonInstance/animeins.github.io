@@ -1,0 +1,399 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Instance-guided Cartoon Editing with a Large-scale Dataset</title>
+<link href="./AnimeIns_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./AnimeIns_files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./AnimeIns_files/jquery.js"></script>
+
+
+<style>
+  p.serif{
+    font-family:"Times New Roman", Times, serif;
+  }
+  p.sansserif{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+</style>
+  
+</head>
+
+<body>
+
+  
+<div class="content">
+  <h1><strong>Instance-guided Cartoon Editing with a Large-scale Dataset</strong></h1>
+
+  <p id="authors"> <a href="https://github.com/dmMaze">Jian Lin </a> <a href="https://moeka.me/research.html">Chengze Li<a> <a href="https://scholar.google.com.hk/citations?user=2WsPjv4AAAAJ">Xueting Liu</a>  <a href="https://github.com/MetallicPickaxe">Zhongping Ge</a><br>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser00.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser01.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/teaser/interface_kenburns02.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser03.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser10.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser11.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/teaser/interface_kenburns12.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/teaser/teaser13.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row" style="text-align:center; font-family: Times New Roman; font-size: 20px">
+    <div class="col-gallery">
+      Input
+    </div>
+    <div class="col-gallery">
+      Instance Masks
+    </div>
+    <div class="col-gallery">
+      Instance-guided 3D Ken Burns
+    </div>
+    <div class="col-gallery">
+      Instance-guided Style Editing
+    </div>
+  </div>
+
+  <!-- <h3 style="text-align:center"><em>It’s like a photo booth, but once the subject is captured, it can be synthesized wherever your dreams take you…</em></h3> -->
+    <font size="+2">
+          <p style="text-align: center;">
+            <a href="" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+       <a href="https://github.com/dmMaze/CartoonSegmentation" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="" target="_blank">[HuggingFace]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="" target="_blank">[Colab]</a>
+          </p>
+    </font>
+
+</div>
+
+<div class="content">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Abstract</p>
+  <p style="font-size: 1.2em" class="serif">
+    Cartoon editing, appreciated by both professional illustrators and hobbyists, allows extensive creative freedom and the development of original narratives within the cartoon domain. However, the existing literature on cartoon editing is complex and leans heavily on manual operations, owing to the challenge of automatic identification of individual character instances. Therefore, an automated segmentation of these elements becomes imperative to facilitate a variety of cartoon editing applications such as visual style editing, motion decomposition and transfer, and the computation of stereoscopic depths for an enriched visual experience. Unfortunately, most current segmentation methods are designed for natural photographs, failing to recognize from the intricate aesthetics of cartoon subjects, thus lowering segmentation quality. The major challenge stems from two key shortcomings: the rarity of high-quality cartoon dedicated datasets and the absence of competent models for high-resolution instance extraction on cartoons. To address this, we introduce a high-quality dataset of over 100k paired high-resolution cartoon images and their instance labeling masks. We also present an instance-aware image segmentation model that can generate accurate, high-resolution segmentation masks for characters in cartoon images. We present that the proposed approach enables a range of segmentation-dependent cartoon editing applications like 3D Ken Burns parallax effects, text-guided cartoon style editing, and puppet animation from illustrations and manga.
+  </p>
+  <!-- <img class="summary-img" src="figs/framework.jpg" style="width:100%;"> <br> -->
+</div>
+
+
+<div class="content">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Segmentation</p>
+
+  <div class="row" style="text-align:center; font-family: Times New Roman; font-size: 20px">
+    <div class="col-gallery">
+      Input
+    </div>
+    <div class="col-gallery">
+      <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Grounded SAM</a> (Finetuned) 
+    </div>
+    <div class="col-gallery">
+      <a href="https://github.com/zymk9/Yet-Another-Anime-Segmenter">YAAS</a> (Finetuned)
+    </div>
+    <div class="col-gallery">
+      Ours
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/00.jpg" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/01.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/02.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/03.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/10.jpg" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/11.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/12.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/13.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/20.jpg" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/21.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/22.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/23.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/30.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/31.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/32.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/33.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/40.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/41.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/42.png" width="100%">
+    </div>
+    <div class="col-gallery">
+      <img src="AnimeIns_files/comparision_seg/43.png" width="100%">
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">3D Ken Burns</p>
+
+  <div class="row" style="text-align:center; font-family: Times New Roman; font-size: 20px">
+    <div class="col">
+      Input
+    </div>
+    <div class="col">
+      Original 3D Kenburns
+    </div>
+    <div class="col">
+      Ours
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/more3dkenburns/1184265/1184265.jpg" width="100%">
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/1184265/default.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/1184265/ours.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/more3dkenburns/3452153/3452153.jpg" width="100%">
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/3452153/default.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/3452153/ours.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/more3dkenburns/kb2/input.png" width="100%">
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/kb2/default.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/kb2/ours.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/more3dkenburns/kb3/input.png" width="100%">
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/kb3/default.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="col">
+      <video autoplay muted loop width="100%">
+        <source src="AnimeIns_files/more3dkenburns/kb3/ours.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+
+
+<div class="content">
+
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Style Editing</p>
+
+  <div class="row" style="text-align:center; font-family: Times New Roman; font-size: 20px">
+    <div class="col">
+      Input
+    </div>
+    <div class="col">
+      Without Instance Guidance
+    </div>
+    <div class="col">
+      Ours
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/00.jpg" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/01.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/02.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/10.jpg" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/11.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/12.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/20.jpg" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/21.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/22.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/30.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/31.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/32.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/40.jpg" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/41.png" width="100%">
+    </div>
+    <div class="col">
+      <img src="AnimeIns_files/comparision_se/42.png" width="100%">
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="content">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">Demo</p>
+  <p style="font-size: 1.2em" class="serif">
+    <video controls width="100%">
+      <source src="AnimeIns_files/ProjectDemo_output.mov.mp4" type="video/mp4; codecs=avc1">
+  </video>
+
+  </p>
+  <!-- <img class="summary-img" src="figs/framework.jpg" style="width:100%;"> <br> -->
+</div>
+
+<!-- <div class="content" id="bibtex">
+  <p style="text-align:left; font-size: 2em; font-weight: bold" class="serif">BibTeX</p>
+  <!-- <span class="serif" style="color:red;"> (Coming Soon)</span> -->
+  <!-- <code> @misc{animeins,<br>
+  &nbsp;&nbsp;title={Cartoon Instance Segmentation},<br>
+  &nbsp;&nbsp;author={},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint arxiv:},<br>
+  &nbsp;&nbsp;year={2023},<br>
+  &nbsp;&nbsp;archivePrefix={arXiv},<br>
+  &nbsp;&nbsp;primaryClass={cs.CV}<br>
+  } </code>  -->
+<!-- </div> -->
+
+<div class="content">
+  <p class="serif">
+    Project page template is borrowed from <a href="https://dreambooth.github.io/">DreamBooth</a>.
+  </p>
+</div>
+
+</body>
+
+<script>
+var videos = document.getElementsByClassName("clickplay");
+for (var i = 0; i < videos.length; i++) {
+  videos[i].addEventListener("click", function() {
+    this.play();
+  });
+  videos[i].addEventListener("ended", function() {
+    this.pause();
+    this.currentTime = 0;
+  });
+}
+</script>
+
+</html>
