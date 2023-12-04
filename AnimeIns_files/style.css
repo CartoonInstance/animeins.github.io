@@ -37,6 +37,28 @@ a, a:visited {
   margin-bottom: 20px;
   font-size: 24px;
 }
+#affiliation {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+#links{
+  margin: 20px 0 5px 0;
+}
+#links ul{
+  font-size: 18px;
+  padding:0; 
+  margin:0;
+  display: flex;
+  list-style: none;
+  justify-content:center;
+}
+#links ul li{
+  margin: 0 10px;
+}
+
 #conference {
   text-align: center;
   margin-bottom: 20px;
